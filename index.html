@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kadiyala Sriharsha — Revenue Operator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: #09090b; color: #fafafa; }
+    .syne { font-family: 'Syne', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text-warm {
+      background: linear-gradient(135deg, #f472b6 0%, #fb923c 60%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-glow {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .card-glow:hover {
+      border-color: rgba(167,139,250,0.35);
+      transform: translateY(-2px);
+    }
+    .pill {
+      background: rgba(167,139,250,0.12);
+      border: 1px solid rgba(167,139,250,0.25);
+      color: #c4b5fd;
+    }
+    .pill-green {
+      background: rgba(52,211,153,0.1);
+      border: 1px solid rgba(52,211,153,0.2);
+      color: #6ee7b7;
+    }
+    .pill-blue {
+      background: rgba(96,165,250,0.1);
+      border: 1px solid rgba(96,165,250,0.2);
+      color: #93c5fd;
+    }
+    .cta-btn {
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      box-shadow: 0 0 40px rgba(124,58,237,0.4), 0 4px 20px rgba(0,0,0,0.4);
+      transition: all 0.25s ease;
+    }
+    .cta-btn:hover {
+      box-shadow: 0 0 60px rgba(124,58,237,0.65), 0 8px 30px rgba(0,0,0,0.5);
+      transform: translateY(-1px) scale(1.01);
+    }
+    .cta-secondary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.25s ease;
+    }
+    .cta-secondary:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.4);
+    }
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+    }
+    .noise {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      opacity: 0.025;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 11px;
+      top: 24px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(167,139,250,0.4), transparent);
+    }
+    .sequence-step {
+      counter-increment: step;
+    }
+    .tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fade-up 0.7s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .delay-2 { animation-delay: 0.22s; opacity: 0; }
+    .delay-3 { animation-delay: 0.36s; opacity: 0; }
+    .delay-4 { animation-delay: 0.5s; opacity: 0; }
+  </style>
+</head>
+<body class="relative overflow-x-hidden">
+  <div class="noise"></div>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4"
+       style="background: rgba(9,9,11,0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <span class="syne font-bold text-white tracking-tight">Sriharsha<span class="gradient-text">.</span></span>
+    <a href="#contact"
+       class="cta-btn text-white text-sm font-semibold px-5 py-2 rounded-lg">
+      Let's Talk Revenue →
+    </a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — HERO
+  ═══════════════════════════════════════ -->
+  <section class="relative min-h-screen flex items-center pt-24 pb-20 px-6 md:px-12 overflow-hidden">
+    <!-- Orbs -->
+    <div class="orb w-[600px] h-[600px] bg-violet-600 opacity-10 -top-32 -left-32"></div>
+    <div class="orb w-[400px] h-[400px] bg-blue-500 opacity-10 top-1/3 right-0"></div>
+    <div class="orb w-[300px] h-[300px] bg-emerald-500 opacity-8 bottom-0 left-1/3"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto w-full">
+      <!-- Badge -->
+      <div class="fade-up delay-1 inline-flex items-center gap-2 pill rounded-full px-4 py-1.5 mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
+        <span class="tag text-violet-300">Open to B2B SaaS — Full-Cycle Revenue Roles</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="syne fade-up delay-2 text-5xl md:text-7xl font-800 leading-[1.05] tracking-tight mb-6">
+        Most SaaS teams don't have<br/>a pipeline problem.<br/>
+        <span class="gradient-text">They have an ownership problem.</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="fade-up delay-3 text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-6">
+        I build, run, and close pipeline — end to end.
+      </p>
+      <div class="fade-up delay-3 text-base md:text-lg text-zinc-300 max-w-xl mb-4 space-y-1">
+        <div>$179K ARR in 90 days.</div>
+        <div>₹3.58 Cr GMV through expansion.</div>
+      </div>
+      <p class="fade-up delay-3 text-base text-zinc-500 max-w-xl mb-10">
+        No handoffs. No attribution games. Just revenue.
+      </p>
+
+      <!-- CTAs -->
+      <div class="fade-up delay-4 flex flex-wrap gap-4 items-center">
+        <a href="#contact" class="cta-btn text-white font-semibold px-7 py-3.5 rounded-xl text-base">
+          See how I operate →
+        </a>
+        <a href="#proof" class="cta-secondary text-zinc-300 font-medium px-7 py-3.5 rounded-xl text-base">
+          See the numbers first
+        </a>
+      </div>
+
+      <!-- Social proof bar -->
+      <div class="fade-up delay-4 mt-14 pt-10 border-t border-white/5 flex flex-wrap gap-6 md:gap-10">
+        <div>
+          <div class="text-xs text-zinc-500 mb-1 tag">Quota attainment</div>
+          <div class="text-white font-bold text-lg">$179K ARR / 90 days</div>
+        </div>
+        <div class="w-px bg-white/8 hidden md:block"></div>
+        <div>
+          <div class="text-xs text-zinc-500 mb-1 tag">GMV generated</div>
+          <div class="text-white font-bold text-lg">₹3.58 Cr via expansion</div>
+        </div>
+        <div class="w-px bg-white/8 hidden md:block"></div>
+        <div>
+          <div class="text-xs text-zinc-500 mb-1 tag">Markets</div>
+          <div class="text-white font-bold text-lg">North America · India</div>
+        </div>
+        <div class="w-px bg-white/8 hidden md:block"></div>
+        <div>
+          <div class="text-xs text-zinc-500 mb-1 tag">Segment</div>
+          <div class="text-white font-bold text-lg">SMB → Mid-Market SaaS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-6 md:mx-12"></div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — PROOF
+  ═══════════════════════════════════════ -->
+  <section id="proof" class="relative py-24 px-6 md:px-12 overflow-hidden">
+    <div class="orb w-[500px] h-[500px] bg-indigo-600 opacity-8 top-0 right-0"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="mb-4">
+        <span class="pill tag px-3 py-1 rounded-full">Proof of Work</span>
+      </div>
+      <h2 class="syne text-4xl md:text-5xl font-800 tracking-tight mb-4">
+        Numbers that don't need<br/><span class="gradient-text">a spin doctor.</span>
+      </h2>
+      <p class="text-zinc-400 max-w-xl mb-14">Two roles. Two markets. One consistent pattern: revenue moves when I'm involved.</p>
+
+      <!-- Stat cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <!-- Stat 1 -->
+        <div class="card-glow rounded-2xl p-8 col-span-1">
+          <div class="pill-green tag px-3 py-1 rounded-full inline-block mb-5">B2B SaaS — North America</div>
+          <div class="stat-number gradient-text mb-2">$179K</div>
+          <div class="text-white font-semibold text-lg mb-1">ARR Closed in 90 Days</div>
+          <div class="text-zinc-500 text-sm leading-relaxed mt-3">
+            Full-cycle ownership across SMB + mid-market. Outbound-sourced pipeline, multi-threaded demos, and closed deals — no hand-holding, no SDR-to-AE relay.
+          </div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="card-glow rounded-2xl p-8 col-span-1">
+          <div class="pill tag px-3 py-1 rounded-full inline-block mb-5">B2C / Marketplace — India</div>
+          <div class="stat-number gradient-text mb-2">₹3.58Cr</div>
+          <div class="text-white font-semibold text-lg mb-1">GMV via Onboarding + Expansion</div>
+          <div class="text-zinc-500 text-sm leading-relaxed mt-3">
+            Built from zero — onboarded new accounts, ran expansion plays to grow GMV, and owned the full post-sale revenue motion. Not support. Revenue.
+          </div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="card-glow rounded-2xl p-8 col-span-1">
+          <div class="pill-blue tag px-3 py-1 rounded-full inline-block mb-5">Execution Profile</div>
+          <div class="space-y-5 mt-2">
+            <div>
+              <div class="text-zinc-400 text-xs tag mb-1">Sales motion</div>
+              <div class="text-white font-medium">Full-cycle · Outbound-led</div>
+            </div>
+            <div>
+              <div class="text-zinc-400 text-xs tag mb-1">Pipeline ownership</div>
+              <div class="text-white font-medium">Prospecting → Close → Expand</div>
+            </div>
+            <div>
+              <div class="text-zinc-400 text-xs tag mb-1">ICP experience</div>
+              <div class="text-white font-medium">SMB &amp; Mid-Market founders, Ops leads</div>
+            </div>
+            <div>
+              <div class="text-zinc-400 text-xs tag mb-1">Deal geography</div>
+              <div class="text-white font-medium">North America primary · India</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Callout bar -->
+      <div class="card-glow rounded-2xl p-6 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
+        <div class="text-3xl">⚡</div>
+        <div>
+          <div class="text-white font-semibold text-base mb-1">What makes this different from 90% of AEs claiming similar numbers?</div>
+          <div class="text-zinc-400 text-sm">No inbound-assisted attribution padding. No SDR-sourced pipeline taking credit. Self-sourced, self-closed deals with measurable GMV expansion on top. Ownership all the way down.</div>
+        </div>
+      </div>
+
+      <!-- Differentiator line -->
+      <div class="mt-6 text-center py-6 px-8 rounded-2xl" style="background: linear-gradient(135deg, rgba(52,211,153,0.07), rgba(96,165,250,0.05)); border: 1px solid rgba(52,211,153,0.15);">
+        <p class="text-lg md:text-xl font-medium">
+          <span class="text-zinc-400">Most reps need a system to perform.</span><br/>
+          <span class="text-white">I perform — then build the system.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-6 md:mx-12"></div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — WHAT I DO
+  ═══════════════════════════════════════ -->
+  <section id="what" class="relative py-24 px-6 md:px-12">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-4">
+        <span class="pill tag px-3 py-1 rounded-full">Revenue Motion</span>
+      </div>
+      <h2 class="syne text-4xl md:text-5xl font-800 tracking-tight mb-4">
+        I run the full arc.<br/><span class="gradient-text-warm">Not just a slice of it.</span>
+      </h2>
+      <p class="text-zinc-400 max-w-xl mb-14">Most early-stage SaaS teams don't need another SDR. They need someone who can run the whole play — and own the outcome.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="card-glow rounded-2xl p-8 group">
+          <div class="w-10 h-10 rounded-xl bg-violet-500/15 border border-violet-500/20 flex items-center justify-center mb-5 text-violet-400 text-lg">🎯</div>
+          <h3 class="text-white font-bold text-xl mb-3">Pipeline Creation</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            I build lists, write sequences, and generate meetings. I don't wait for leads. I identify the ICP, craft the angle, and create the conversation from scratch.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill-green text-xs px-2.5 py-1 rounded-md tag">Cold outbound</span>
+            <span class="pill-green text-xs px-2.5 py-1 rounded-md tag">ICP research</span>
+            <span class="pill-green text-xs px-2.5 py-1 rounded-md tag">Multi-channel</span>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 group">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/20 flex items-center justify-center mb-5 text-blue-400 text-lg">📨</div>
+          <h3 class="text-white font-bold text-xl mb-3">Outbound Systems</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            Not spray-and-pray. Signal-based, persona-specific, and built to scale. I build sequences that get replies — not opens.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill-blue text-xs px-2.5 py-1 rounded-md tag">Sequencing</span>
+            <span class="pill-blue text-xs px-2.5 py-1 rounded-md tag">Persona mapping</span>
+            <span class="pill-blue text-xs px-2.5 py-1 rounded-md tag">Signal triggers</span>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 group">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/20 flex items-center justify-center mb-5 text-emerald-400 text-lg">🤝</div>
+          <h3 class="text-white font-bold text-xl mb-3">Demo → Close</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            I run discovery that actually reveals pain. My demos aren't product tours — they're ROI conversations. I move deals forward and ask for the signature.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill-green text-xs px-2.5 py-1 rounded-md tag">Discovery</span>
+            <span class="pill-green text-xs px-2.5 py-1 rounded-md tag">Value selling</span>
+            <span class="pill-green text-xs px-2.5 py-1 rounded-md tag">Closing</span>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 group">
+          <div class="w-10 h-10 rounded-xl bg-orange-500/15 border border-orange-500/20 flex items-center justify-center mb-5 text-orange-400 text-lg">📈</div>
+          <h3 class="text-white font-bold text-xl mb-3">Expansion &amp; NRR</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+            The ₹3.58 Cr GMV wasn't luck. I onboard accounts with expansion in mind from Day 1 — building usage habits and identifying upsell triggers before they surface.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="pill text-xs px-2.5 py-1 rounded-md tag">Onboarding-led expansion</span>
+            <span class="pill text-xs px-2.5 py-1 rounded-md tag">NRR focus</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-6 md:mx-12"></div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4 — HOW I THINK
+  ═══════════════════════════════════════ -->
+  <section id="thinking" class="relative py-24 px-6 md:px-12 overflow-hidden">
+    <div class="orb w-[500px] h-[500px] bg-violet-700 opacity-8 -bottom-32 -left-32"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="mb-4">
+        <span class="pill tag px-3 py-1 rounded-full">Operator Mindset</span>
+      </div>
+      <h2 class="syne text-4xl md:text-5xl font-800 tracking-tight mb-4">
+        How I think about<br/><span class="gradient-text">pipeline and revenue.</span>
+      </h2>
+      <p class="text-zinc-400 max-w-xl mb-14">The mechanics are learnable. The judgment — knowing what to prioritize, who to target, what to say — is what separates reps from operators.</p>
+
+      <div class="space-y-4">
+
+        <!-- Thinking card 1 -->
+        <div class="card-glow rounded-2xl p-8">
+          <div class="flex flex-col md:flex-row md:items-start gap-6">
+            <div class="flex-shrink-0">
+              <div class="pill tag px-3 py-1 rounded-full">ICP Logic</div>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg mb-3">I don't chase accounts. I score them.</h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                Before I send a single email, I ask: does this account have the budget trigger, the urgency signal, and the decision authority structure to close in a reasonable cycle? If the answer is no on any two — skip it. ICP discipline is what keeps conversion rates sane when volume scales up.
+              </p>
+              <div class="mt-4 p-4 rounded-xl bg-white/3 border border-white/6">
+                <div class="text-xs tag text-zinc-500 mb-2">My ICP filter (B2B SaaS, SMB/MM)</div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+                  <div class="text-zinc-300">→ 10–200 employees</div>
+                  <div class="text-zinc-300">→ Active hiring in ops/sales</div>
+                  <div class="text-zinc-300">→ Funded or revenue-positive</div>
+                  <div class="text-zinc-300">→ Recent trigger event</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thinking card 2 -->
+        <div class="card-glow rounded-2xl p-8">
+          <div class="flex flex-col md:flex-row md:items-start gap-6">
+            <div class="flex-shrink-0">
+              <div class="pill-blue tag px-3 py-1 rounded-full">Outbound Philosophy</div>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg mb-3">Relevance > Volume. Always.</h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                I've seen what "100 emails/day" looks like when they're not relevant — burned domains, burned reputation, zero pipeline. My outbound is built around one question: <em class="text-zinc-200">"Why should this specific person care, right now?"</em> The answer determines the hook, the sequence, and the channel mix.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thinking card 3 -->
+        <div class="card-glow rounded-2xl p-8">
+          <div class="flex flex-col md:flex-row md:items-start gap-6">
+            <div class="flex-shrink-0">
+              <div class="pill-green tag px-3 py-1 rounded-full">Messaging</div>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg mb-3">I lead with the cost of the problem, not the product.</h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                Nobody replies to "we help companies like yours improve X by Y%." They reply when you name their exact problem, frame the cost of inaction, and make the ask feel like a no-brainer. Every message I write is built on: <span class="text-zinc-200 font-medium">problem → cost → pivot → ask.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thinking card 4 -->
+        <div class="card-glow rounded-2xl p-8">
+          <div class="flex flex-col md:flex-row md:items-start gap-6">
+            <div class="flex-shrink-0">
+              <div class="pill tag px-3 py-1 rounded-full">Sales Execution</div>
+            </div>
+            <div>
+              <h3 class="text-white font-bold text-lg mb-3">I treat every deal like a project, not a conversation.</h3>
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                Mutual action plans from the first call. Champion mapping before I run the demo. I know who signs, who blocks, and who influences — before I ask for the close. Deals don't ghost me; I see it coming three steps out and re-engage before it happens.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-6 md:mx-12"></div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 5 — SAMPLE EXECUTION
+  ═══════════════════════════════════════ -->
+  <section id="execution" class="relative py-24 px-6 md:px-12">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-4">
+        <span class="pill tag px-3 py-1 rounded-full">Sample Execution</span>
+      </div>
+      <h2 class="syne text-4xl md:text-5xl font-800 tracking-tight mb-4">
+        Most outbound fails before<br/><span class="gradient-text">the first email is sent.</span>
+      </h2>
+      <p class="text-zinc-400 max-w-xl mb-14">
+        Not because of messaging. Because of targeting. Here's exactly how I approach it — judge the thinking.
+      </p>
+
+      <!-- Approach cards -->
+      <div class="space-y-4">
+
+        <div class="card-glow rounded-2xl p-8 flex gap-6">
+          <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-violet-500/15 border border-violet-500/25 flex items-center justify-center text-violet-400 font-bold text-sm">1</div>
+          <div>
+            <h3 class="text-white font-bold text-lg mb-2">Start with ICP discipline</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">If the account doesn't have budget, urgency, or a clear decision structure — it's not worth touching. Volume doesn't fix bad targeting.</p>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 flex gap-6">
+          <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/25 flex items-center justify-center text-blue-400 font-bold text-sm">2</div>
+          <div>
+            <h3 class="text-white font-bold text-lg mb-2">Build around trigger signals</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Hiring, funding, team expansion — these create timing. Outbound without timing is noise.</p>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 flex gap-6">
+          <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center text-emerald-400 font-bold text-sm">3</div>
+          <div>
+            <h3 class="text-white font-bold text-lg mb-2">Message around cost, not features</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">People don't respond to product value. They respond to problems that are already costing them.</p>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 flex gap-6">
+          <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-500/15 border border-orange-500/25 flex items-center justify-center text-orange-400 font-bold text-sm">4</div>
+          <div>
+            <h3 class="text-white font-bold text-lg mb-2">Run deals like projects</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">Multi-thread early. Map stakeholders. Drive next steps. I don't "hope deals close" — I control the process.</p>
+          </div>
+        </div>
+
+        <!-- CTA callout -->
+        <div class="rounded-2xl p-8 text-center" style="background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(79,70,229,0.08)); border: 1px solid rgba(124,58,237,0.25);">
+          <p class="text-zinc-300 text-base leading-relaxed mb-5">
+            If this is how you want pipeline built —<br class="hidden md:block"/>
+            <span class="text-white font-bold">we should talk.</span>
+          </p>
+          <a href="#contact" class="cta-btn inline-block text-white font-semibold px-7 py-3 rounded-xl text-sm">
+            Start the revenue conversation →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider mx-6 md:mx-12"></div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 6 — WHY ME
+  ═══════════════════════════════════════ -->
+  <section id="why" class="relative py-24 px-6 md:px-12 overflow-hidden">
+    <div class="orb w-[400px] h-[400px] bg-emerald-600 opacity-8 top-0 right-0"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="mb-4">
+        <span class="pill-green tag px-3 py-1 rounded-full">The Honest Case</span>
+      </div>
+      <h2 class="syne text-4xl md:text-5xl font-800 tracking-tight mb-14">
+        Why this hire is<br/><span class="gradient-text">different from the last 10.</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="card-glow rounded-2xl p-8 flex gap-5">
+          <div class="text-2xl flex-shrink-0 mt-0.5">⚡</div>
+          <div>
+            <h3 class="text-white font-bold text-base mb-2">I ramp fast. Not "fast for a new hire." Actually fast.</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">I've operated in two different markets, two different motions, from scratch. I know how to build a pipeline before the CRM is even set up.</p>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 flex gap-5">
+          <div class="text-2xl flex-shrink-0 mt-0.5">🎯</div>
+          <div>
+            <h3 class="text-white font-bold text-base mb-2">I own the number. Not the activity metrics.</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">I don't measure success by emails sent. I measure it by pipeline generated, deals closed, and accounts expanded. If revenue isn't moving, I change what I'm doing — not my spreadsheet formatting.</p>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 flex gap-5">
+          <div class="text-2xl flex-shrink-0 mt-0.5">🔧</div>
+          <div>
+            <h3 class="text-white font-bold text-base mb-2">I build systems, not habits.</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">The difference between a rep and an operator: when I leave, the playbook stays. ICP docs, sequence templates, objection maps — I document as I go because I know what happens when institutional knowledge walks out the door.</p>
+          </div>
+        </div>
+
+        <div class="card-glow rounded-2xl p-8 flex gap-5">
+          <div class="text-2xl flex-shrink-0 mt-0.5">🧠</div>
+          <div>
+            <h3 class="text-white font-bold text-base mb-2">I think like a founder, execute like a rep.</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">I understand that every deal matters early. I treat a $5K deal with the same strategic seriousness as a $50K one — because logos, NRR, and referrals compound differently than you'd expect.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Contrast block -->
+      <div class="mt-8 card-glow rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-white/6">
+          <div class="p-8">
+            <div class="text-zinc-500 tag mb-4">What you're probably used to seeing</div>
+            <div class="space-y-2 text-sm text-zinc-500">
+              <div class="flex gap-2"><span>✗</span> "Exceeded quota by 112%" (no context)</div>
+              <div class="flex gap-2"><span>✗</span> "Results-oriented team player"</div>
+              <div class="flex gap-2"><span>✗</span> Vague GMV claims with no ownership</div>
+              <div class="flex gap-2"><span>✗</span> 3 years at a company with an SDR doing their sourcing</div>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="text-emerald-400 tag mb-4">What I'm bringing</div>
+            <div class="space-y-2 text-sm text-zinc-300">
+              <div class="flex gap-2"><span class="text-emerald-400">✓</span> $179K ARR closed solo in 90 days, full cycle</div>
+              <div class="flex gap-2"><span class="text-emerald-400">✓</span> ₹3.58 Cr GMV with traceable expansion logic</div>
+              <div class="flex gap-2"><span class="text-emerald-400">✓</span> Operator-level thinking you can read above</div>
+              <div class="flex gap-2"><span class="text-emerald-400">✓</span> Will own the output, not just the process</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider mx-6 md:mx-12"></div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 7 — CTA
+  ═══════════════════════════════════════ -->
+  <section id="contact" class="relative py-28 px-6 md:px-12 overflow-hidden">
+    <div class="orb w-[700px] h-[700px] bg-violet-700 opacity-12 -bottom-64 left-1/2 -translate-x-1/2"></div>
+
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 pill rounded-full px-4 py-1.5 mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="tag text-zinc-300">Available for the right opportunity</span>
+      </div>
+
+      <h2 class="syne text-4xl md:text-6xl font-800 tracking-tight mb-6">
+        If you're building revenue<br/>
+        <span class="gradient-text">and need it done right</span><br/>
+        — let's talk.
+      </h2>
+
+      <p class="text-zinc-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+        If pipeline is slow, inconsistent, or dependent on too many people —<br class="hidden md:block"/>
+        <span class="text-white font-medium">I can fix that.</span>
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+        <a href="https://mail.google.com/mail/?view=cm&to=kadiyalasriharshakadiyala@gmail.com&su=Revenue%20Conversation&body=Hi%20Sriharsha%2C%20I%20came%20across%20your%20page%20and%20wanted%20to%20connect."
+           target="_blank" rel="noopener noreferrer"
+           class="cta-btn text-white font-bold px-8 py-4 rounded-xl text-base w-full sm:w-auto text-center">
+          Start the revenue conversation →
+        </a>
+        <a href="https://www.linkedin.com/in/kadiyala-sriharsha/"
+           target="_blank" rel="noopener noreferrer"
+           class="cta-secondary text-zinc-300 font-medium px-8 py-4 rounded-xl text-base w-full sm:w-auto text-center">
+          View LinkedIn profile
+        </a>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-zinc-500">
+        <span>📍 Open to remote — North America timezones</span>
+        <span>⏱ Response within 24 hours</span>
+        <span>🤝 No recruiters, please — founders &amp; revenue leaders only</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 px-6 md:px-12 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-600 text-sm">
+    <span class="syne font-bold text-zinc-500">Sriharsha<span class="text-violet-500">.</span></span>
+    <span>Revenue Operator · B2B SaaS · Full-Cycle</span>
+    <span>Built to close. Not to impress.</span>
+  </footer>
+
+</body>
+</html>
